@@ -95,15 +95,4 @@ typedef struct list_s
 
 Provide instructions here on how to use or compile the code, if necessary.
 
-## Author
-
-- [Your Name]
-- [Your Email Address]
-
-## License
-
-This project is licensed under the [LICENSE NAME] - see the [LICENSE.md](LICENSE.md) file for details.
-
----
-
-In the above template, replace `[Your Name]` and `[Your Email Address]` with your actual name and email address. Additionally, replace `[LICENSE NAME]` with the appropriate license name or URL if you choose to include a license for your project.
+## Author.

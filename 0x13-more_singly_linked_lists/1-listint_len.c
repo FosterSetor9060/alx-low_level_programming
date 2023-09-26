@@ -1,11 +1,11 @@
 #include <stdlib.h>
 
 /**
- * struct listint_s - more singly linked list
+ * Struct listint_s - more singly linked list
  * @n: integer
  * @next: points to the next node
  *
- * Description: singly linked list node structure
+ * Inscription: singly linked list node structure
  * 
  */
 

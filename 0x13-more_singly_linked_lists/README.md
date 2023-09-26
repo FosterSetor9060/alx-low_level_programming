@@ -1,4 +1,5 @@
-# Project Title: 0x13. C - More Singly Linked Lists
+PROJECT
+ More Singly Linked Lists
 
 ## Table of Contents
 - [Description](#description)
@@ -54,26 +55,6 @@ You are tasked with coming up with solutions for the tasks yourself to meet the 
 - Don't forget to push your header file
 - All your header files should be include guarded
 
-### More Info
-Please use this data structure for this project:
-
-```c
-/**
- * struct listint_s - singly linked list
- * @n: integer
- * @next: points to the next node
- *
- * Description: singly linked list node structure
- */
-typedef struct listint_s
-{
-    int n;
-    struct listint_s *next;
-} listint_t;
-```
-
----
-
 ## Usage
 To work on this project, follow these steps:
 1. Clone this repository to your local machine.
@@ -92,4 +73,3 @@ To work on this project, follow these steps:
 ---
 
 ## License
-This project is not associated with any specific license. Please refer to the project's guidelines and the school's policies for usage and distribution.

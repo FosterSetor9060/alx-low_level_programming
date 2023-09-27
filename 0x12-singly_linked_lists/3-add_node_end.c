@@ -3,10 +3,10 @@
 #include <string.h>
 #include "lists.h"
 /**
- * add_node_end - Adds a new node at the end of a list_t list.
+ * add_node_end - Adds A  new node at the Ed of a list_t list.
  * @head: A pointer to a pointer to the head of the list.
  * @str: The string to be stored in the new node.
- * Return: The address of the new element, or NULL if it failed.
+ * Return: The address of the new element, or NULL if it failing...
  */
 list_t *add_node_end(list_t **head, const char *str)
 

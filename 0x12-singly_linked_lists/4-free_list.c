@@ -2,8 +2,8 @@
 #include "lists.h"
 
 /**
- * free_list - Frees a list_t list.
- * @head: A pointer to the head of the list.
+ * free_list - Frees a list_t lists 
+ * @head: A pointer to The  head of the lists compu.
  */
 void free_list(list_t *head)
 {

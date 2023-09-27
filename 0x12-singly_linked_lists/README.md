@@ -8,22 +8,12 @@ Creating a README file for a C project is an essential part of documenting your 
 
 - [Project Description](#project-description)
 - [Learning Objectives](#learning-objectives)
-- [Resources](#resources)
+- [Resorces](#resources)
 - [Requirements](#requirements)
 - [File Descriptions](#file-descriptions)
 - [Usage](#usage)
 - [Author](#author)
-- [License](#license)
-
-## Project Description
-
-This C project, "0x12. C - Singly Linked Lists," is designed to teach and reinforce the concepts of linked lists as a fundamental data structure in programming. It is part of the Holberton School curriculum and was authored by Julien Barbier.
-
-**Project Timeline:**
-- Project Start Date: Sep 22, 2023, 6:00 AM
-- Project End Date: Sep 23, 2023, 6:00 AM
-- Checker Release Date: Sep 22, 2023, 12:00 PM
-- An auto review will be launched at the deadline.
+- [License](#lice
 
 ### Concepts
 
@@ -72,24 +62,16 @@ Remember that you are responsible for creating your solutions for the project ta
 
 ## File Descriptions
 
-Please use the following data structure for this project:
+Please use the following data structure for thi
+## Project Description
 
-```c
-/**
- * struct list_s - singly linked list
- * @str: string - (malloc'ed string)
- * @len: length of the string
- * @next: points to the next node
- *
- * Description: singly linked list node structure
- */
-typedef struct list_s
-{
-    char *str;
-    unsigned int len;
-    struct list_s *next;
-} list_t;
-```
+This C project, "0x12. C - Singly Linked Lists," is designed to teach and reinforce the concepts of linked lists as a fundamental data structure in programming. It is part of the Holberton School curriculum and was authored by Julien Barbier.
+
+**Project Timeline:**
+- Project Start Date: Sep 22, 2023, 6:00 AM
+- Project End Date: Sep 23, 2023, 6:00 AM
+- Checker Release Date: Sep 22, 2023, 12:00 PM
+- An auto review will be launched at the deadline.
 
 ## Usage
 

@@ -2,10 +2,10 @@
 #include "lists.h"
 
 /**
- * print_list - Prints all the elements of a list_t list.
- * @h: A pointer to the head of the list.
+ * Print list - Prints all the elements of a list_t list.
+ * @h: A pointer to the top most list
  *
- * Return: The number of nodes in the list.
+ * Return: The nodes show the number of list
  */
 size_t print_list(const list_t *h)
 {

@@ -1,72 +1,96 @@
 #include "main.h"
-#include <stdio.h>
+
 
 /**
- * error_file - checks if files can be opened.
- * @file_from: the_file_from
- * @file_to: the_file_to
- * @argv: vector for arguments
- * Return: outcomes 0
- */
-void error_file(int file_from, int file_to, char *argv[])
-{
-	if (file_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
-	if (file_to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
-}
-
-/**
- * main - entry for the program.
- * @argc: number_f0r_arguments
- * @argv: vector for arguments
- * Return: outcome 0
+ * main - the entry point always
+ * @argc: representents the argument_count
+ * @argv: represent the argument_vector
+ * Return: 0 on success, error_codes on failure
  */
 int main(int argc, char *argv[])
 {
-	int file_from, file_to, err_close;
-	ssize_t nchars, nwr;
-	char buf[1024];
-
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
-		exit(97);
+		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
+		return (97);
 	}
 
-	file_from = open(argv[1], O_RDONLY);
-	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
-	error_file(file_from, file_to, argv);
+	const char *file_from = argv[1];
+	const char *file_to = argv[2];
 
-	nchars = 1024;
-	while (nchars == 1024)
-	{
-		nchars = read(file_from, buf, 1024);
-		if (nchars == -1)
-			error_file(-1, 0, argv);
-		nwr = write(file_to, buf, nchars);
-		if (nwr == -1)
-			error_file(0, -1, argv);
-	}
+	if (copy_file(file_from, file_to) != 0)
+		return (1);
 
-	err_close = close(file_from);
-	if (err_close == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-		exit(100);
-	}
-
-	err_close = close(file_to);
-	if (err_close == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-		exit(100);
-	}
 	return (0);
 }
+
+/**
+ * copy_file - Copy the content of one file to another
+ * @file_from: initial path file
+ * @file_to: Destination path fOr the file
+ * Return: 0 on success, error codes on failure
+ */
+int copy_file(const char *file_from, const char *file_to)
+{
+	int source_fd, dest_fd;
+	char buffer[BUFFER_SIZE];
+	ssize_t bytes_read, bytes_written;
+
+	source_fd = open(file_from, O_RDONLY);
+	if (source_fd == -1)
+		return (error_message(98, file_from, NULL));
+
+	dest_fd = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (dest_fd == -1)
+		return (error_message(99, file_to, NULL));
+
+	while ((bytes_read = read(source_fd, buffer, BUFFER_SIZE)) > 0)
+	{
+		bytes_written = write(dest_fd, buffer, bytes_read);
+		if (bytes_written == -1)
+			return (error_message(99, file_to, file_from));
+	}
+
+	if (bytes_read == -1)
+		return (error_message(98, file_from, NULL));
+
+	if (close(source_fd) == -1 || close(dest_fd) == -1)
+		return (error_message(100, NULL, NULL));
+
+	return (0);
+}
+
+/**
+ * error_message - Printing the Error Message to stderr
+ * @error_code: code for the error
+ * @file1: the first file_name
+ * @file2: the second file_name
+ * Return: when failed error
+ */
+int error_message(int error_code, const char *file1, const char *file2)
+{
+	const char *message;
+
+	switch (error_code)
+	{
+	case 97:
+		message = "Usage: %s file_from file_to\n";
+		break;
+	case 98:
+		message = "Error: Can't read from file %s\n";
+		break;
+	case 99:
+		message = "Error: Can't write to file %s\n";
+		break;
+	case 100:
+		message = "Error: Can't close fd\n";
+		break;
+	default:
+		message = "Unknown error\n";
+		break;
+	}
+
+	dprintf(STDERR_FILENO, message, argv[0], file1, file2);
+	return (error_code);
+}
+

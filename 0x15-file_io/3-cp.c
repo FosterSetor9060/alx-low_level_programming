@@ -1,74 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
-#define BUFFER_SIZE 1024
-
-int open_source_file(const char *file_from)
-{
-	int source_fd = open(file_from, O_RDONLY);
-	if (source_fd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
-		exit(98);
-	}
-	return source_fd;
-}
-
-int open_dest_file(const char *file_to)
-{
-	int dest_fd = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (dest_fd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_to);
-		exit(99);
-	}
-	return dest_fd;
-}
-
-void copy_file_contents(int source_fd, int dest_fd)
-{
-	char buffer[BUFFER_SIZE];
-	ssize_t bytes_read, bytes_written;
-
-	while ((bytes_read = read(source_fd, buffer, BUFFER_SIZE)) > 0)
-	{
-		bytes_written = write(dest_fd, buffer, bytes_read);
-		if (bytes_written == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file\n");
-			close(source_fd);
-			close(dest_fd);
-			exit(99);
-		}
-	}
-
-	if (bytes_read == -1)
-	{
-		dprintf(STDERR_FILENO, "Error reading from source file\n");
-		close(source_fd);
-		close(dest_fd);
-		exit(98);
-	}
-}
+/**
+* main - the program that imitates the element
+* of a file to other file
+* @argc: Argument number
+* @argv: Argument string
+* Return: always 0
+*/
 
 int main(int argc, char *argv[])
 {
-	if (argc != 3)
+int file_from, file_to;
+int num1 = 1024, num2 = 0;
+char buf[1024];
+
+if (argc != 3)
+	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
+file_from = open(argv[1], O_RDONLY);
+if (file_from == -1)
+{
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+	exit(98);
+}
+file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR
+	| S_IRGRP | S_IWGRP | S_IROTH);
+if (file_to == -1)
+{
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+	close(file_from), exit(99);
+}
+while (num1 == 1024)
+{
+	num1 = read(file_from, buf, 1024);
+	if (num1 == -1)
 	{
-		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
-		exit(97);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
 	}
-
-	const char *file_from = argv[1];
-	const char *file_to = argv[2];
-
-	int source_fd = open_source_file(file_from);
-	int dest_fd = open_dest_file(file_to);
-
-	copy_file_contents(source_fd, dest_fd);
-
-	close(source_fd);
-	close(dest_fd);
-
-	return 0;
+	num2 = write(file_to, buf, num1);
+	if (num2 < num1)
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
 }
 
+if (close(file_from) == -1)
+	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from), exit(100);
+
+if (close(file_to) == -1)
+	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to), exit(100);
+
+return (0);
+}

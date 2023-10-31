@@ -15,6 +15,22 @@ This project focuses on understanding and implementing recursion in the C progra
 - **Checker Release:** August 30, 2023, 6:00 AM
 - An auto review will be launched at the deadline.
 
+### General
+
+- **Allowed Editors:** vi, vim, emacs
+- All files will be compiled on Ubuntu 20.04 LTS using `gcc`, with the options `-Wall -Werror -Wextra -pedantic -std=gnu89`.
+- All code files should end with a newline character.
+- A `README.md` file at the root of the project folder is mandatory.
+- Your code should adhere to the Betty style. It will be checked using `betty-style.pl` and `betty-doc.pl`.
+- Do not use global variables.
+- Limit each file to a maximum of 5 functions.
+- Do not use standard library functions like `printf`, `puts`, etc.
+- You can use the `_putchar` function.
+- Do not include `_putchar.c` as we will use our own file for it.
+- Prototypes of all functions and the `_putchar` function should be included in a header file named `main.h`. Don't forget to push your header file.
+- Avoid using any kind of loops.
+- Do not use static variables.
+
 ## Learning Objectives
 
 By completing this project, you will achieve the following learning objectives:
@@ -35,24 +51,6 @@ To successfully complete this project, you should read or watch the following re
 - [C - Recursion](#)
 - [C Programming Tutorial 85, Recursion pt.1](#)
 - [C Programming Tutorial 86, Recursion pt.2](#)
-
-## Requirements
-
-### General
-
-- **Allowed Editors:** vi, vim, emacs
-- All files will be compiled on Ubuntu 20.04 LTS using `gcc`, with the options `-Wall -Werror -Wextra -pedantic -std=gnu89`.
-- All code files should end with a newline character.
-- A `README.md` file at the root of the project folder is mandatory.
-- Your code should adhere to the Betty style. It will be checked using `betty-style.pl` and `betty-doc.pl`.
-- Do not use global variables.
-- Limit each file to a maximum of 5 functions.
-- Do not use standard library functions like `printf`, `puts`, etc.
-- You can use the `_putchar` function.
-- Do not include `_putchar.c` as we will use our own file for it.
-- Prototypes of all functions and the `_putchar` function should be included in a header file named `main.h`. Don't forget to push your header file.
-- Avoid using any kind of loops.
-- Do not use static variables.
 
 ## Plagiarism Warning
 

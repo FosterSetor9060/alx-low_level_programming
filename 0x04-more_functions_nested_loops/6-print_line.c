@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * @n: number of times the character _ should be printed
+ * @n: no. of Times for  character _ printed
  */
 void print_line(int n)
 {

@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include"list.h"
 
 /**
  * Struct listint_s - more singly linked list
@@ -8,7 +9,6 @@
  * Inscription: singly linked list node structure
  * 
  */
-
 typedef struct listint_s
 {
 	int n;

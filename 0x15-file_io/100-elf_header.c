@@ -10,6 +10,10 @@ void print_abi(unsigned char *e_ident);
 void print_osabi(unsigned char *e_ident);
 void print_type(unsigned int e_type, unsigned char *e_ident);
 void print_entry(unsigned long int e_entry, unsigned char *e_ident);
+void print_elf_info(int elf, char *filename);
+void print_class_data_version(unsigned char *e_ident);
+void print_os_abi_abi_version(unsigned char *e_ident);
+void print_type_entry(int elf, unsigned char *e_ident);
 void print_data(unsigned char *e_ident);
 void print_version(unsigned char *e_ident);
 void close_elf(int elf);
@@ -17,14 +21,9 @@ void check_elf(unsigned char *e_ident);
 void print_magic(unsigned char *e_ident);
 void print_class(unsigned char *e_ident);
 
-void print_elf_info(int elf, char *filename);
-void print_class_data_version(unsigned char *e_ident);
-void print_os_abi_abi_version(unsigned char *e_ident);
-void print_type_entry(int elf, unsigned char *e_ident);
-
 /**
- * main - Entry point of the ELF header program.
- * @argc: Number of command-line arguments.
+ * main - Entry point >ELF header program.
+ * @argc: Number_ command-line arguments.
  * @argv: Array of command-line argument strings.
  * Return: 0 on success, 1 on failure.
  */
@@ -51,8 +50,8 @@ int main(int argc, char *argv[])
 	return (0);
 }
 /**
- * print_elf_info - Print information from the ELF header.
- * @elf: File descriptor for the ELF file.
+ * print_elf_info - Printing info from the ELF header.
+ * @elf: File descriptor for ELF file.
  * @filename: Name of the ELF file.
  */
 void print_elf_info(int elf, char *filename)

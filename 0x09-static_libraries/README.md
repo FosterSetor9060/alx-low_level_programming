@@ -54,18 +54,8 @@ Please note that you are expected to come up with solutions for the project task
 - **Global Variables:** You are not allowed to use global variables.
 - **Functions per File:** No more than 5 functions per file.
 - **Standard Library:** You are not allowed to use the standard library. Functions like `printf`, `puts`, etc., are forbidden.
-- **_putchar:** You are allowed to use `_putchar`. You don’t have to push `_putchar.c`, as we will use our file. If you do, it won't be taken into account.
-- **Header File:** The prototypes of all your functions and the prototype of the function `_putchar` should be included in your header file called `main.h`. Don’t forget to push your header file.
-
-### Bash
-
-- **Allowed Editors:** vi, vim, emacs
-- **Test Environment:** All your scripts will be tested on Ubuntu 20.04 LTS.
-- **Newline:** All your files should end with a newline character.
-- **Shebang:** The first line of all your files should be exactly `#!/bin/bash`.
-- **README.md:** A `README.md` file, at the root of the project folder, describing what each script is doing.
-- **Executable Files:** All your files must be executable.
+- *
 
 ## More Info
-
+@alxFosterSetor
 You do not need to learn about dynamic libraries for this project. Focus on understanding and working with static libraries.
